@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Chatroom</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="container" class="col">
+        <div id="header" class="row">
+            <div id="title">The Chatroom
+                <span class="material-icons">chat</span>
+            </div>
+
+            <div class="spacer-grow"></div>
+
+            <div id="user-panel" class="row">
+                <div class="field-content row shadow">
+                    <span class="user-avatar"></span>
+                    <span class="user-name">-</span>
+                </div>
+                <button id="signout-button" class="icon"><span class="material-icons">logout</span></button>
+            </div>
+        </div>
+
+        <div id="main-panel" class="row">
+            <div id="center-area" class="col">
+                <div id="game-info" style="font-size: 25px; font-style: oblique;">Game Info: <span id="turn">Your</span> turn<br>
+                    Number of Ship left: <span id="numShip">0</span><br>
+                    <span id="identify"></span><span id="battle-message"><span>
+                </div>
+                <div id="grid" class="game-board col">
+                <div id="00" class="box"></div>
+                <div id="01" class="box"></div>
+                <div id="02" class="box"></div>
+                <div id="03" class="box"></div>
+                <div id="04" class="box"></div>
+                <div id="05" class="box"></div>
+                <div id="06" class="box"></div>
+                <div id="07" class="box"></div>
+                <div id="08" class="box"></div>
+                <div id="10" class="box"></div>
+                <div id="11" class="box"></div>
+                <div id="12" class="box"></div>
+                <div id="13" class="box"></div>
+                <div id="14" class="box"></div>
+                <div id="15" class="box"></div>
+                <div id="16" class="box"></div>
+                <div id="17" class="box"></div>
+                <div id="18" class="box"></div>
+                <div id="20" class="box"></div>
+                <div id="21" class="box"></div>
+                <div id="22" class="box"></div>
+                <div id="23" class="box"></div>
+                <div id="24" class="box"></div>
+                <div id="25" class="box"></div>
+                <div id="26" class="box"></div>
+                <div id="27" class="box"></div>
+                <div id="28" class="box"></div>
+                <div id="30" class="box"></div>
+                <div id="31" class="box"></div>
+                <div id="32" class="box"></div>
+                <div id="33" class="box"></div>
+                <div id="34" class="box"></div>
+                <div id="35" class="box"></div>
+                <div id="36" class="box"></div>
+                <div id="37" class="box"></div>
+                <div id="38" class="box"></div>
+                <div id="40" class="box"></div>
+                <div id="41" class="box"></div>
+                <div id="42" class="box"></div>
+                <div id="43" class="box"></div>
+                <div id="44" class="box"></div>
+                <div id="45" class="box"></div>
+                <div id="46" class="box"></div>
+                <div id="47" class="box"></div>
+                <div id="48" class="box"></div>
+                <div id="50" class="box"></div>
+                <div id="51" class="box"></div>
+                <div id="52" class="box"></div>
+                <div id="53" class="box"></div>
+                <div id="54" class="box"></div>
+                <div id="55" class="box"></div>
+                <div id="56" class="box"></div>
+                <div id="57" class="box"></div>
+                <div id="58" class="box"></div>
+                <div id="60" class="box"></div>
+                <div id="61" class="box"></div>
+                <div id="62" class="box"></div>
+                <div id="63" class="box"></div>
+                <div id="64" class="box"></div>
+                <div id="65" class="box"></div>
+                <div id="66" class="box"></div>
+                <div id="67" class="box"></div>
+                <div id="68" class="box"></div>
+                <div id="70" class="box"></div>
+                <div id="71" class="box"></div>
+                <div id="72" class="box"></div>
+                <div id="73" class="box"></div>
+                <div id="74" class="box"></div>
+                <div id="75" class="box"></div>
+                <div id="76" class="box"></div>
+                <div id="77" class="box"></div>
+                <div id="78" class="box"></div>
+                <div id="80" class="box"></div>
+                <div id="81" class="box"></div>
+                <div id="82" class="box"></div>
+                <div id="83" class="box"></div>
+                <div id="84" class="box"></div>
+                <div id="85" class="box"></div>
+                <div id="86" class="box"></div>
+                <div id="87" class="box"></div>
+                <div id="88" class="box"></div>
+                </div>
+            </div>
+            <div id="chat-panel" class="col">
+                <div id="chat-area" class="col"></div>
+                <div id="check-typing" class="col"></div>
+                <form id="chat-input-form" autocomplete="off">
+                    <input id="chat-input" placeholder="Enter your message"></input>
+                </form>
+            </div>
+
+            <div id="online-users-panel" class="col">
+                <div id="online-users-area" class="col"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="signin-overlay" class="overlay row">
+        <div class="content shadow row">
+            <form id="signin-form" class="col">
+                <div class="caption">SIGN IN WITH YOUR ACCOUNT</div>
+                <div class="spacer-0"></div>
+                <input id="signin-username" placeholder="Enter your username"></input>
+                <input id="signin-password" type="password" placeholder="Enter your password"></input>
+                <div class="spacer-0"></div>
+                <button type="submit">Sign In</button>
+                <div id="signin-message" class="warning center"></div>
+                <div class="spacer-grow"></div>
+            </form>
+
+            <div class="spacer-0"></div>
+
+            <form id="register-form" class="col">
+                <div class="caption">OR, REGISTER IF YOU DO NOT HAVE ONE</div>
+                <div class="spacer-0"></div>
+                <input id="register-username" maxlength="10" placeholder="Enter your username"></input>
+                <select id="register-avatar">
+                    <option value="">Select your avatar</option>
+                </select>
+                <input id="register-name" maxlength="16" placeholder="Enter your name"></input>
+                <input id="register-password" type="password" placeholder="Enter your password"></input>
+                <input id="register-confirm" type="password" placeholder="Enter your password again"></input>
+                <div class="spacer-0"></div>
+                <button type="submit">Register</button>
+                <div id="register-message" class="warning center"></div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.min.js"></script>
+    <script src="scripts/socket.js"></script>
+    <script src="scripts/avatar.js"></script>
+    <script src="scripts/ui.js"></script>
+    <script src="scripts/registration.js"></script>
+    <script src="scripts/authentication.js"></script>
+    <script>
+    $(document).ready(function() {
+        // Initialize the UI
+        UI.initialize();
+
+        // Validate the signin
+        Authentication.validate(
+            () => {
+                SignInForm.hide();
+                UserPanel.update(Authentication.getUser());
+                UserPanel.show();
+
+                Socket.connect();
+            },
+            () => { SignInForm.show(); }
+        );
+    });
+    </script>
+</body>
+</html>
